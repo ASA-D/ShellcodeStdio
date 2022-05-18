@@ -1,19 +1,18 @@
 ### ShellcodeStdio
-An extensible framework for easily writing debuggable, compiler optimized, position independent, x86/x64 shellcode for windows platforms.
+デバッグ可能な、コンパイラに最適化された、環境に依存しない、Windows プラットフォーム用の x86/x64 シェルコードを簡単に記述するための拡張可能なフレームワークです。
+基本的な使い方はmain.cppを参照してください。
 
-For basic usage see main.cpp
-
-### Suggested compiler options
+### 推奨されるコンパイラのオプション
 ```
 C/C++ -> Optimization -> /O1, /Ob2, /Oi, /Os, /Oy-, /GL
 C/C++ -> Code Generation -> /MT, /GS-, /Gy
 Linker -> General -> /INCREMENTAL:NO
 ```
-### How do I use this?
-When working with this framework, and coding shellcode in general, you'll have to keep a few things in mind:
+### 使用法
+このフレームワークを使用する場合、また一般的にシェルコードをコーディングする場合、いくつかのことを念頭に置く必要があります。
 
-1. You must declare all your variables on the stack.
-2. Strings are no exception. This is how to create a char*, wchar_t* on the stack. Don't forget to null-terminate.
+1. スタック上ですべての変数を宣言する必要があります。
+2. 文字列も例外ではありません。ここでは、スタック上にchar*, wchar_t*を作成する方法を説明します。 Don't forget to null-terminate.
 ```C++
 unsigned char str[] = { 'E', 'x', 'a', 'm', 'p', 'l', 'e', 0 }; 
 unsigned char w_str[] = { 'E', 0, 'x', 0, 'a', 0, 'm', 0, 'p', 0, 'l', 0, 'e', 0, 0 };
